@@ -13,15 +13,15 @@ public class Assembler {
         }
     }
 
-    public void MovRax(IntPtr arg) => this.OpCodes.AddRange(new byte[] { 0x48, 0xB8 }.Concat(BitConverter.GetBytes(arg)));
+    public void MovRax(IntPtr arg) => this.OpCodes.AddRange(new byte[] { 0x48, 0xB8 }.Concat(BitConverter.GetBytes((ulong)arg)));
 
-    public void MovRcx(IntPtr arg) => this.OpCodes.AddRange(new byte[] { 0x48, 0xB9 }.Concat(BitConverter.GetBytes(arg)));
+    public void MovRcx(IntPtr arg) => this.OpCodes.AddRange(new byte[] { 0x48, 0xB9 }.Concat(BitConverter.GetBytes((ulong)arg)));
 
-    public void MovRdx(IntPtr arg) => this.OpCodes.AddRange(new byte[] { 0x48, 0xBA }.Concat(BitConverter.GetBytes(arg)));
+    public void MovRdx(IntPtr arg) => this.OpCodes.AddRange(new byte[] { 0x48, 0xBA }.Concat(BitConverter.GetBytes((ulong)arg)));
 
-    public void MovR8(IntPtr arg) => this.OpCodes.AddRange(new byte[] { 0x49, 0xB8 }.Concat(BitConverter.GetBytes(arg)));
+    public void MovR8(IntPtr arg) => this.OpCodes.AddRange(new byte[] { 0x49, 0xB8 }.Concat(BitConverter.GetBytes((ulong)arg)));
 
-    public void MovR9(IntPtr arg) => this.OpCodes.AddRange(new byte[] { 0x49, 0xB9 }.Concat(BitConverter.GetBytes(arg)));
+    public void MovR9(IntPtr arg) => this.OpCodes.AddRange(new byte[] { 0x49, 0xB9 }.Concat(BitConverter.GetBytes((ulong)arg)));
 
     public void SubRsp(byte arg) => this.OpCodes.AddRange(new byte[] { 0x48, 0x83, 0xEC, arg });
 
@@ -29,7 +29,7 @@ public class Assembler {
 
     public void AddRsp(byte arg) => this.OpCodes.AddRange(new byte[] { 0x48, 0x83, 0xC4, arg });
 
-    public void MovRaxTo(IntPtr dest) => this.OpCodes.AddRange(new byte[] { 0x48, 0xA3 }.Concat(BitConverter.GetBytes(dest)));
+    public void MovRaxTo(IntPtr dest) => this.OpCodes.AddRange(new byte[] { 0x48, 0xA3 }.Concat(BitConverter.GetBytes((ulong)dest)));
 
     public void MovEax(IntPtr arg) => this.OpCodes.AddRange(BitConverter.GetBytes((int)arg).Prepend<byte>(0xB8));
 

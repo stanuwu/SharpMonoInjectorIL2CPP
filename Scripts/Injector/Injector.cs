@@ -222,7 +222,7 @@ public class Injector : IDisposable {
 
     IntPtr OpenImageFromData(byte[] assembly) {
         IntPtr statusPtr = this.memory.Allocate(4);
-        IntPtr rawImage = this.Execute(this.Exports[mono_image_open_from_data], this.memory.AllocateAndWrite(assembly), (IntPtr)assembly.Length, 1, statusPtr);
+        IntPtr rawImage = this.Execute(this.Exports[mono_image_open_from_data], this.memory.AllocateAndWrite(assembly), (IntPtr)assembly.Length, (IntPtr)1, statusPtr);
 
         MonoImageOpenStatus status = (MonoImageOpenStatus)this.memory.ReadInt(statusPtr);
 
